@@ -1,24 +1,24 @@
 $LocalDevPath = "C:\xampp\htdocs\kaisensdata\"
 # Function cdDev {Set-Location -Path "C:\xampp\htdocs\"}
 Function cdDev {Set-Location -Path $LocalDevPath}
+Function reload {. $profile }
+function RunCurrentFolderPHPServer{php -S localhost:8888}
+function ConnectionXtremRemoteSSH{ssh wuchin@164.132.59.209}
+
+
 Set-Alias -Name dev -Value cdDev
-
 Set-Alias -Name grep -Value Select-String
-
-Function reload {. $profile}
 Set-Alias -Name rc -Value reload
-# Set-Alias -Name rc -Value . $profile
+Set-Alias -Name php_serve -Value RunCurrentFolderPHPServer
+Set-Alias -Name XtremRemote -Value ConnectionXtremRemoteSSH
 
-
-Import-Module posh-git
 
 # Invoke-Expression (&starship init powershell)
-
-
 #########################
 ####    Git Alias    ####
 #########################
 
+Import-Module posh-git
 #Param
 
 Function GitStatus {git status}
@@ -54,4 +54,3 @@ Set-Alias -Name gst -Value GitStatus
 Set-Alias -Name gaa -Value GitAddAll
 Set-Alias -Name gck -Value GitCheckOutBranch
 Set-Alias -Name gckb -Value GitCheckOutAndCreateBranch
-
